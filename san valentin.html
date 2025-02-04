@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            color: #d63384;
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .yes-btn {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        .no-btn {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .explosion {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            animation: explosion 1s forwards;
+        }
+
+        @keyframes explosion {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Quieres ser mi San Valentín? 💖</h1>
+    <button class="btn yes-btn" onclick="showLove()">Sí 💕</button>
+    <button class="btn no-btn" id="noButton" onclick="shrinkNoButton()">No 💔</button>
+
+    <div id="loveMessage" class="hidden">
+        <h2>¡Sabía que dirías que sí! ❤️</h2>
+        <p>Tenkiu, sos el mejor. Se le quiere mucho viejito sabroson 😘</p>
+        <div class="heart">💖💖💖</div>
+        <div class="explosion">💥💖💖💖💥</div>
+    </div>
+
+    <script>
+        function showLove() {
+            document.getElementById("loveMessage").classList.remove("hidden");
+        }
+
+        function shrinkNoButton() {
+            const noButton = document.getElementById("noButton");
+            let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
+            if (currentSize > 10) { // Evitar que desaparezca
+                noButton.style.fontSize = (currentSize - 3) + "px";
+                noButton.style.padding = (currentSize - 5) + "px";
+            }
+        }
+    </script>
+</body>
+</html>
